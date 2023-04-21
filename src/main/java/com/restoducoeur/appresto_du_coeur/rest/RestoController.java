@@ -30,11 +30,7 @@ public class RestoController {
         return restoService.getListRestaurant();
     }
 
-/*    @GetMapping("/resto/{idResto}/menu")
-    public Optional<Menu> findMenuById(@PathVariable("idResto") Long idResto){
-        restoService.findRestoId(idResto);
-        return  menuService.findMenuId(idResto);
-    }*/
+
 
 
     @GetMapping("/menu/{idMenu}/resto")

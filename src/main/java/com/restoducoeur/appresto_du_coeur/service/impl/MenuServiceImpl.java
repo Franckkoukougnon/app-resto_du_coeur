@@ -9,6 +9,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -46,6 +48,13 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public Optional<Menu> findMenuId(Long idResto) {
         return menuRepository.findById(idResto);
+    }
+
+    @Override
+    public List<Menu> getListMenu() {
+        List<Menu> listMenu = new ArrayList<>();
+        menuRepository.findAll().forEach(listMenu ::add);
+        return listMenu;
     }
 
 
