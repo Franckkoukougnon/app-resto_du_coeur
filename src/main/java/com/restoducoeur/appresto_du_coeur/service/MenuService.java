@@ -19,4 +19,6 @@ public interface MenuService {
     Optional<Menu> findMenuId(Long idResto);
 
     List<Menu> getListMenu();
+
+    Optional<Menu> findByIdMenu(Long id);
 }

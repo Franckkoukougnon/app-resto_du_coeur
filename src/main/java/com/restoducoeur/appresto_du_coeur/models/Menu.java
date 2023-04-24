@@ -28,7 +28,7 @@ public class Menu {
     private String dessert;
     private double price;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade ={CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "resto_id")
     private  Resto resto;
 }

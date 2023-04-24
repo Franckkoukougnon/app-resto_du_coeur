@@ -1,7 +1,6 @@
 package com.restoducoeur.appresto_du_coeur.rest;
 
 import com.restoducoeur.appresto_du_coeur.models.Menu;
-import com.restoducoeur.appresto_du_coeur.models.Resto;
 import com.restoducoeur.appresto_du_coeur.service.MenuService;
 import com.restoducoeur.appresto_du_coeur.service.RestoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +40,8 @@ public class MenuController {
         return  menuService.findMenuId(idResto);
     }
 
-/*    @GetMapping("/resto/{idResto}/menu")
-    public Resto findMenuById(@PathVariable("idResto") Long idResto){
-        restoService.findRestoId(idResto);
-        return  menuService.findMenuId(idResto).get().getResto();
-    }*/
+
+
 
     @PostMapping
     public Menu createMenu(@RequestBody Menu menu){

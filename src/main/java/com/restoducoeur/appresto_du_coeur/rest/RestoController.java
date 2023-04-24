@@ -1,10 +1,12 @@
 package com.restoducoeur.appresto_du_coeur.rest;
 
 
+import com.restoducoeur.appresto_du_coeur.models.Menu;
 import com.restoducoeur.appresto_du_coeur.models.Resto;
 import com.restoducoeur.appresto_du_coeur.service.MenuService;
 import com.restoducoeur.appresto_du_coeur.service.RestoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/resto")
@@ -43,9 +46,11 @@ public class RestoController {
 
 
 
-    @GetMapping("/{id}")
-    public Optional<Resto> findRestoById(@PathVariable("id") Long id){
-        return restoService.findRestoId(id);
+    @GetMapping("/{idResto}")
+    public Set<Menu> findRestoById(@PathVariable("idResto") Long idResto){
+        menuService.findMenuId(idResto);
+
+        return   restoService.findRestoId(idResto).get().getMenus();
     }
 
 
@@ -58,5 +63,10 @@ public class RestoController {
     @PutMapping("/{id}")
     public void updateResto(@RequestBody Resto resto, @PathVariable("id") Long id){
         restoService.updateRestaurant(id, resto);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteResto(@PathVariable("id") Long id){
+        restoService.deleteResto(id);
     }
 }

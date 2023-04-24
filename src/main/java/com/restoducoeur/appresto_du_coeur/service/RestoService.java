@@ -9,15 +9,18 @@ public interface RestoService {
 
     List<Resto> getListRestaurant();
 
-    Optional<Resto> findRestoId(Long id);
+    Optional<Resto> findRestoId(Long idResto);
 
     void addRestaurant(Resto resto);
 
     void updateRestaurant(Long id, Resto resto);
 
 
-    void findById(Long idResto);
 
 
     Optional<Resto> findRestoMenu(Long idMenu);
+
+
+
+    void deleteResto(Long id);
 }

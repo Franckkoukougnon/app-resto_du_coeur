@@ -1,10 +1,16 @@
 package com.restoducoeur.appresto_du_coeur.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +25,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Resto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +33,10 @@ public class Resto {
     private String nom;
     private String adress;
 
-
-  /*  @OneToMany(mappedBy ="resto")
-    private Set<Menu> menus = new HashSet<Menu>();*/
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resto",fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Menu> menus;
 }
+
+
+

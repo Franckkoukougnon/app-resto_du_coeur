@@ -29,8 +29,8 @@ public class RestoServiceImpl implements RestoService {
     }
 
     @Override
-    public Optional<Resto> findRestoId(Long id) {
-        return restoRepository.findById(id);
+    public Optional<Resto> findRestoId(Long idResto) {
+        return restoRepository.findById(idResto);
     }
 
     @Override
@@ -44,16 +44,16 @@ public class RestoServiceImpl implements RestoService {
         restoRepository.save(resto);
     }
 
-    @Override
-    public void findById(Long idResto) {
-        restoRepository.existsById(idResto);
 
-    }
 
     @Override
     public Optional<Resto> findRestoMenu(Long idMenu) {
         return restoRepository.findById(idMenu);
     }
 
+    @Override
+    public void deleteResto(Long id) {
+        restoRepository.deleteById(id);
+    }
 
 }
