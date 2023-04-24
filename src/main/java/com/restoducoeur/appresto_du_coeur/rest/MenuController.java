@@ -1,5 +1,6 @@
 package com.restoducoeur.appresto_du_coeur.rest;
 
+import com.restoducoeur.appresto_du_coeur.exceptions.ResourceNotFoundException;
 import com.restoducoeur.appresto_du_coeur.models.Menu;
 import com.restoducoeur.appresto_du_coeur.service.MenuService;
 import com.restoducoeur.appresto_du_coeur.service.RestoService;
@@ -31,7 +32,12 @@ public class MenuController {
 
     @GetMapping("/menu/{id}")
     public Optional<Menu> findById(@PathVariable("id") Long id){
-        return  menuService.findById(id);
+        if(menuService.findById(id).isEmpty()){
+            throw new ResourceNotFoundException();
+        } else {
+            return menuService.findById(id);
+        }
+
     }
 
     @GetMapping("/resto/{idResto}/menu")
